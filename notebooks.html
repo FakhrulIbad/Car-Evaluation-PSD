@@ -1,0 +1,1680 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Car Evaluation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="static/pygments.css" />
+    <link rel="stylesheet" href="static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
+    <script src="static/jquery.js"></script>
+    <script src="static/underscore.js"></script>
+    <script src="static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="static/doctools.js"></script>
+    <script src="static/clipboard.min.js"></script>
+    <script src="static/copybutton.js"></script>
+    <script src="static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="prev" title="Markdown Files" href="markdown.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="_primary"
+          id="_primary"/>
+  <label class="overlay overlay-primary" for="_primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="_secondary"
+          id="_secondary"/>
+  <label class="overlay overlay-secondary" for="_secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+              <p>
+                <b>NAMA: FAKHRUL IBAD </b><br>
+                <b>NIM: 210411100212</b>
+              </p>
+            </li>
+        </ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="_primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+    <li><a href="https://github.com/FakhrulIbad/Car-Evaluation-PSD" target="blank"
+      class="btn btn-sm btn-source-repository-button dropdown-item"
+      title="Source repository"
+      data-bs-placement="left" data-bs-toggle="tooltip"
+   >
+     
+   
+   <span class="btn__icon-container">
+     <i class="fab fa-github"></i>
+     </span>
+   <span class="btn__text-container">Repository</span>
+   </a>
+   </li>
+         
+         
+         
+         
+         <li><a href="https://colab.research.google.com/drive/1FlSHQm5C_QPs7znuGYR09JmoBRRmSptF?usp=sharing" target="blank"
+      class="btn btn-sm btn-source-issues-button dropdown-item"
+      title="Link Colab"
+      data-bs-placement="left" data-bs-toggle="tooltip"
+   >
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Google Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>BUSINESS UNDERSTANDING</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>BUSINESS UNDERSTANDING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan"><strong>Penjelasan</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>DATA UNDERSTANDING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data"><strong>Deskripsi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur"><strong>Penjelasan Fitur</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-class"><strong>Penjelasan Class</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-data-tiap-class"><strong>Jumlah data tiap class</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inisialisasi-data"><strong>Inisialisasi Data</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-data"><strong>Konversi data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data"><strong>Visualisasi data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values"><strong>Missing values</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur"><strong>Seleksi Fitur</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-balance"><strong>Data Balance</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outlier"><strong>Outlier</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing"><strong>PREPROCESSING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Seleksi Fitur</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-data"><strong>Balancing Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-data"><strong>Splitting Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data"><strong>Normalisasi data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling"><strong>MODELLING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes"><strong>Naive Bayes</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree"><strong>Decision Tree</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation"><strong>EVALUATION</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Naive Bayes</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Decision Tree</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment"><strong>DEPLOYMENT</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-model-dan-preprocessing"><strong>Save Model dan Preprocessing</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streamlit"><strong>Streamlit</strong></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="business-understanding">
+<h1><strong>BUSINESS UNDERSTANDING</strong><a class="headerlink" href="#business-understanding" title="Permalink to this heading">#</a></h1>
+<section id="penjelasan">
+<h2><strong>Penjelasan</strong><a class="headerlink" href="#penjelasan" title="Permalink to this heading">#</a></h2>
+<p><strong>CAR EVALUATION</strong></p>
+<p>Merupakan sebuah dataset yang berisi tentang beberapa data yang diambil dari banyak mobil yang bertujuan untuk memprediksi apakah mobil tersebut dapat diterima untuk digunakan dalam kepentingan sehari-hari, standar umum pasar, aturan keselamatan dan lain-lain.</p>
+<p>Dataset dibuat oleh Marko Bohanec (<a class="reference external" href="mailto:marko&#46;bohanec&#37;&#52;&#48;ijs&#46;si">marko<span>&#46;</span>bohanec<span>&#64;</span>ijs<span>&#46;</span>si</a>) pada bulan Juni 1997, dengan donatur dari data yang ada dalam dataset tersebut adalah Marko Bohanec sendiri dan Blaz Zupan (<a class="reference external" href="mailto:blaz&#46;zupan&#37;&#52;&#48;ijs&#46;si">blaz<span>&#46;</span>zupan<span>&#64;</span>ijs<span>&#46;</span>si</a>).</p>
+<p>Dataset ini mengevaluasi mobil diambil dari berbagai macam konsep:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">CAR</span>                      <span class="n">kelayakan</span> <span class="n">mobil</span>
+   <span class="o">.</span> <span class="n">PRICE</span>                  <span class="n">dari</span> <span class="n">segi</span> <span class="n">harga</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="n">buying</span>               <span class="n">harga</span> <span class="n">beli</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="n">maint</span>                <span class="n">harga</span> <span class="n">perbaikan</span>
+   <span class="o">.</span> <span class="n">TECH</span>                   <span class="n">dari</span> <span class="n">segi</span> <span class="n">teknis</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="n">COMFORT</span>              <span class="n">kenyamanan</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="n">doors</span>              <span class="n">jumlah</span> <span class="n">pintu</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="n">persons</span>            <span class="n">jumlah</span> <span class="n">orang</span> <span class="n">yang</span> <span class="n">bisa</span> <span class="n">dimuat</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="n">lug_boot</span>           <span class="n">ukuran</span> <span class="n">bagasi</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="n">safety</span>               <span class="n">keamanan</span> <span class="n">mobil</span>
+</pre></div>
+</div>
+<p>Atribut yang digunakan dalam dataset ini adalah yang ditulis menggunakan huruf kecil. Selain target/class (CAR), model ini memasukkan 3 kelas tambahan, yaitu: PRICE, TECH, COMFORT. Tiap konsep ini merupakan bagian dari fitur-fitur dibawahnya (lowercase).</p>
+<p>Database ini berisi berbagai contoh dengan ada struktur informasi yang dihapus (uppercase), menyisakan CAR dan menghubungkannya secara langsung dengan enam atribut: buying, maint, doors, persons, lug_boot, safety.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
+<h1><strong>DATA UNDERSTANDING</strong><a class="headerlink" href="#data-understanding" title="Permalink to this heading">#</a></h1>
+<section id="deskripsi-data">
+<h2><strong>Deskripsi Data</strong><a class="headerlink" href="#deskripsi-data" title="Permalink to this heading">#</a></h2>
+<p>Data diambil dari: <a class="reference external" href="https://archive.ics.uci.edu/dataset/19/car+evaluation">Car Evaluation - UCI Machine Learning Repository</a></p>
+<p>Dataset ini berisi atas 6 fitur, 1 class dan memiliki sebanyak 1728 data, fitur-fitur tersebut adalah:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Buying (Categorical)
+2. Maintenance (Categorical)
+3. Door (Categorical)
+4. Person (Categorical)
+5. Lug Boot (Categorical)
+6. Safety (Categorical)
+</pre></div>
+</div>
+<p>Sedangkan class-nya adalah tingkat kelayakan mobil tersebut. Di mana tingkat kelayakan tersebut dibagi menjadi 4 macam:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Unaccaptable (tidak dapat diterima)
+2. Acceptable (dapat diterima)
+3. Good (bagus)
+4. Very Good (sangat bagus)
+</pre></div>
+</div>
+</section>
+<section id="penjelasan-fitur">
+<h2><strong>Penjelasan Fitur</strong><a class="headerlink" href="#penjelasan-fitur" title="Permalink to this heading">#</a></h2>
+<p>Fitur-fiturnya seperti yang sudah disebut di atas yaitu:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Buying: adalah harga beli dari mobil tersebut, dalam dataset ini Buying dibagi menjadi 4 macam yaitu: v-high (sangat mahal), high (mahal), med (normal), low (murah).
+2. Maintenance: adalah harga perawatan dari mobil, untuk data Maintenance sendiri sama dengan data Buying, yaitu: v-high, high, med, dan low.
+3. Door: adalah jumlah pintu yang ada di mobil tersebut, Door dibagi menjadi 4 jenis, yaitu: 2, 3, 4, 5-more.
+4. Person: adalah jumlah orang yang muat dalam mobil tersebut, dibagi menjadi 3 jenis, yaitu: 2, 4, more.
+5. Lug Boot: ukuran bagasi mobil tersebut, dibagi menjadi 3 jenis, yaitu: small, med, big
+6. Safety: adalah tingkat (rating) keselamatan dari mobil, dibagi 3 jenis, yaitu: low, med, high.
+</pre></div>
+</div>
+</section>
+<section id="penjelasan-class">
+<h2><strong>Penjelasan Class</strong><a class="headerlink" href="#penjelasan-class" title="Permalink to this heading">#</a></h2>
+<p>Class dalam dataset ini berupa data <strong>Categorical</strong> yang menjelaskan tingkat kelayakan/penerimaan mobil tersebut di kalangan masyarakat, tingkatan tersebut dibagi menjadi 4 macam yaitu:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Unacceptable: menunjukkan bahwa mobil tersebut tidak dapat diterima atau belum layak sebab faktor tertentu seperti biaya perawatan yang mahal, dsb.
+2. Acceptable: menunjukkan bahwa mobil tersebut sudah layak dan dapat diterima.
+3. Good: menunjukkan bahwa mobil tersebut merupakan mobil yang bagus, memiliki atribut yang lebih bagus daripada class &quot;acceptable&quot;.
+4. Very Good: menunjukkan bahwa mobil tersebut merupakan mobil yang sangat bagus dan sangat layak untuk diperjual belikan.
+</pre></div>
+</div>
+<section id="jumlah-data-tiap-class">
+<h3><strong>Jumlah data tiap class</strong><a class="headerlink" href="#jumlah-data-tiap-class" title="Permalink to this heading">#</a></h3>
+<p>Jumlah data dalam setiap class:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>class</p></th>
+<th class="head"><p>jumlah</p></th>
+<th class="head"><p>jumlah(%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>unacc</p></td>
+<td><p>1210</p></td>
+<td><p>(70.023 %)</p></td>
+</tr>
+<tr class="row-odd"><td><p>acc</p></td>
+<td><p>384</p></td>
+<td><p>(22.222 %)</p></td>
+</tr>
+<tr class="row-even"><td><p>good</p></td>
+<td><p>69</p></td>
+<td><p>(3.993 %)</p></td>
+</tr>
+<tr class="row-odd"><td><p>v-good</p></td>
+<td><p>65</p></td>
+<td><p>(3.762 %)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inisialisasi-data">
+<h2><strong>Inisialisasi Data</strong><a class="headerlink" href="#inisialisasi-data" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://archive.ics.uci.edu/ml/machine-learning-databases/car/car.data&#39;</span>
+<span class="n">column_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">,</span> <span class="s1">&#39;maint&#39;</span><span class="p">,</span> <span class="s1">&#39;doors&#39;</span><span class="p">,</span> <span class="s1">&#39;persons&#39;</span><span class="p">,</span> <span class="s1">&#39;lug_boot&#39;</span><span class="p">,</span> <span class="s1">&#39;safety&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">column_names</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-89f4f69b-1426-4b7c-b9ae-8798b764e33e" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>buying</th>
+      <th>maint</th>
+      <th>doors</th>
+      <th>persons</th>
+      <th>lug_boot</th>
+      <th>safety</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>vhigh</td>
+      <td>vhigh</td>
+      <td>2</td>
+      <td>2</td>
+      <td>small</td>
+      <td>low</td>
+      <td>unacc</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>vhigh</td>
+      <td>vhigh</td>
+      <td>2</td>
+      <td>2</td>
+      <td>small</td>
+      <td>med</td>
+      <td>unacc</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>vhigh</td>
+      <td>vhigh</td>
+      <td>2</td>
+      <td>2</td>
+      <td>small</td>
+      <td>high</td>
+      <td>unacc</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>vhigh</td>
+      <td>vhigh</td>
+      <td>2</td>
+      <td>2</td>
+      <td>med</td>
+      <td>low</td>
+      <td>unacc</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>vhigh</td>
+      <td>vhigh</td>
+      <td>2</td>
+      <td>2</td>
+      <td>med</td>
+      <td>med</td>
+      <td>unacc</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1723</th>
+      <td>low</td>
+      <td>low</td>
+      <td>5more</td>
+      <td>more</td>
+      <td>med</td>
+      <td>med</td>
+      <td>good</td>
+    </tr>
+    <tr>
+      <th>1724</th>
+      <td>low</td>
+      <td>low</td>
+      <td>5more</td>
+      <td>more</td>
+      <td>med</td>
+      <td>high</td>
+      <td>vgood</td>
+    </tr>
+    <tr>
+      <th>1725</th>
+      <td>low</td>
+      <td>low</td>
+      <td>5more</td>
+      <td>more</td>
+      <td>big</td>
+      <td>low</td>
+      <td>unacc</td>
+    </tr>
+    <tr>
+      <th>1726</th>
+      <td>low</td>
+      <td>low</td>
+      <td>5more</td>
+      <td>more</td>
+      <td>big</td>
+      <td>med</td>
+      <td>good</td>
+    </tr>
+    <tr>
+      <th>1727</th>
+      <td>low</td>
+      <td>low</td>
+      <td>5more</td>
+      <td>more</td>
+      <td>big</td>
+      <td>high</td>
+      <td>vgood</td>
+    </tr>
+  </tbody>
+</table>
+<p>1728 rows × 7 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-89f4f69b-1426-4b7c-b9ae-8798b764e33e')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-89f4f69b-1426-4b7c-b9ae-8798b764e33e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-89f4f69b-1426-4b7c-b9ae-8798b764e33e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+<section id="konversi-data">
+<h3><strong>Konversi data</strong><a class="headerlink" href="#konversi-data" title="Permalink to this heading">#</a></h3>
+<p>Karena tiap fitur dan class dalam dataset ini berupa data Categorical, maka harus dikonversi menjadi numeric agar data bisa diproses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buying</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;low&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;med&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;vhigh&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">maint</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;low&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;med&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;vhigh&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">doors</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;2&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;5more&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
+<span class="n">persons</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;2&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;more&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<span class="n">lug_boot</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;small&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;med&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;big&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<span class="n">safety</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;low&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;med&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<span class="n">target</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;unacc&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;acc&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;good&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;vgood&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
+
+<span class="n">df_kon</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">buying</span><span class="p">[</span><span class="n">size</span><span class="p">]</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">]]</span>
+<span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;maint&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">maint</span><span class="p">[</span><span class="n">size</span><span class="p">]</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;maint&#39;</span><span class="p">]]</span>
+<span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;doors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">doors</span><span class="p">[</span><span class="n">size</span><span class="p">]</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;doors&#39;</span><span class="p">]]</span>
+<span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;persons&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">persons</span><span class="p">[</span><span class="n">size</span><span class="p">]</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;persons&#39;</span><span class="p">]]</span>
+<span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;lug_boot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lug_boot</span><span class="p">[</span><span class="n">size</span><span class="p">]</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;lug_boot&#39;</span><span class="p">]]</span>
+<span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;safety&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">safety</span><span class="p">[</span><span class="n">size</span><span class="p">]</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;safety&#39;</span><span class="p">]]</span>
+<span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">target</span><span class="p">[</span><span class="n">size</span><span class="p">]</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]]</span>
+
+<span class="n">df_kon</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-643bd813-b1b4-41ab-b1a4-792598dfae94" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>buying</th>
+      <th>maint</th>
+      <th>doors</th>
+      <th>persons</th>
+      <th>lug_boot</th>
+      <th>safety</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1723</th>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1724</th>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1725</th>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1726</th>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1727</th>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+<p>1728 rows × 7 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-643bd813-b1b4-41ab-b1a4-792598dfae94')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-643bd813-b1b4-41ab-b1a4-792598dfae94 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-643bd813-b1b4-41ab-b1a4-792598dfae94');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+</section>
+<section id="visualisasi-data">
+<h2><strong>Visualisasi data</strong><a class="headerlink" href="#visualisasi-data" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;PERBANDINGAN TIAP FITUR DENGAN CLASS&#39;</span><span class="p">)</span>
+
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">,</span> <span class="s1">&#39;maint&#39;</span><span class="p">,</span> <span class="s1">&#39;doors&#39;</span><span class="p">,</span> <span class="s1">&#39;persons&#39;</span><span class="p">,</span> <span class="s1">&#39;lug_boot&#39;</span><span class="p">,</span> <span class="s1">&#39;safety&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">i</span> <span class="o">//</span> <span class="mi">3</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">feature</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1"> vs Class&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="images/3a8bcadc7cbfae2745ab7ebab860bb6d1843f6038ee267d10e32f88fd01ae5d3.png" src="images/3a8bcadc7cbfae2745ab7ebab860bb6d1843f6038ee267d10e32f88fd01ae5d3.png" />
+</div>
+</div>
+<p>Plot di atas menunjukkan perbandingan tiap class dengan fitur, dapat dibaca seperti berikut:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Untuk</span> <span class="n">fitur</span> <span class="n">buying</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">.</span> <span class="n">Class</span> <span class="n">untuk</span> <span class="n">value</span> <span class="s2">&quot;vhigh&quot;</span> <span class="n">terdiri</span> <span class="n">dari</span> <span class="n">unacc</span> <span class="n">dan</span> <span class="n">acc</span><span class="p">,</span> <span class="n">dengan</span> <span class="k">class</span> <span class="nc">unacc</span> <span class="n">lebih</span> <span class="n">banyak</span> <span class="n">daripada</span> <span class="k">class</span> <span class="nc">acc</span><span class="o">.</span>
+    <span class="n">b</span><span class="o">.</span> <span class="n">Class</span> <span class="n">untuk</span> <span class="n">value</span> <span class="s2">&quot;high&quot;</span> <span class="n">terdiri</span> <span class="n">dari</span> <span class="n">unacc</span> <span class="n">dan</span> <span class="n">acc</span><span class="p">,</span> <span class="n">dengan</span> <span class="k">class</span> <span class="nc">unacc</span> <span class="n">lebih</span> <span class="n">banyak</span> <span class="n">daripada</span> <span class="k">class</span> <span class="nc">acc</span><span class="o">.</span>
+    <span class="n">c</span><span class="o">.</span> <span class="n">Class</span> <span class="n">untuk</span> <span class="n">value</span> <span class="s2">&quot;med&quot;</span> <span class="n">terdiri</span> <span class="n">dari</span> <span class="n">unacc</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">vgood</span><span class="p">,</span> <span class="n">dan</span> <span class="n">good</span><span class="p">,</span> <span class="n">dengan</span> <span class="k">class</span> <span class="nc">terbanyak</span> <span class="n">sesuai</span> <span class="n">urutan</span> <span class="n">unacc</span> <span class="o">&gt;</span> <span class="n">acc</span> <span class="o">&gt;</span> <span class="n">vgood</span> <span class="o">&gt;</span> <span class="n">good</span><span class="o">.</span>
+    <span class="n">d</span><span class="o">.</span> <span class="n">Class</span> <span class="n">untuk</span> <span class="n">value</span> <span class="s2">&quot;low&quot;</span> <span class="n">terdiri</span> <span class="n">dari</span> <span class="n">unacc</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">vgood</span><span class="p">,</span> <span class="n">dan</span> <span class="n">good</span><span class="p">,</span> <span class="n">dengan</span> <span class="k">class</span> <span class="nc">terbanyak</span> <span class="n">sesuai</span> <span class="n">urutan</span> <span class="n">unacc</span> <span class="o">&gt;</span> <span class="n">acc</span> <span class="o">&gt;</span> <span class="n">good</span> <span class="o">&gt;</span> <span class="n">vgood</span><span class="o">.</span>
+
+<span class="mf">2.</span> <span class="n">dst</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="missing-values">
+<h2><strong>Missing values</strong><a class="headerlink" href="#missing-values" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>>>> buying      0
+    maint       0
+    doors       0
+    persons     0
+    lug_boot    0
+    safety      0
+    class       0
+    dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kode di atas menunjukkan bahwa semua fitur dan class tidak ada data null atau data kosong atau missing values dari setiap fitur dan class yang tersedia.</p>
+</section>
+<section id="seleksi-fitur">
+<h2><strong>Seleksi Fitur</strong><a class="headerlink" href="#seleksi-fitur" title="Permalink to this heading">#</a></h2>
+<p>Seleksi fitur (feature selection) adalah proses memilih subset fitur yang paling relevan dan informatif dari kumpulan data asli untuk digunakan dalam membangun model. Tujuannya adalah untuk meningkatkan kinerja model, mengurangi overfitting, dan mengurangi kompleksitas komputasi dengan menggunakan hanya fitur-fitur yang paling penting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">mutual_info_classif</span>
+
+<span class="n">importances</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">df_kon</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+<span class="n">feat_importances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">importances</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">feat_importances</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;teal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Scores&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Features&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Importance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="images/f2edc6c66e78dbee4b6b15eca18ed6cd0b0596658081079b2f34e5c3579de1c1.png" src="images/f2edc6c66e78dbee4b6b15eca18ed6cd0b0596658081079b2f34e5c3579de1c1.png" />
+</div>
+</div>
+<p>Berdasarkan grafik di atas, bahwa fitur paling penting dalam dasaet ini adalah fitur “safety”, dan fitur yang paling tidak penting adalah “doors”</p>
+</section>
+<section id="data-balance">
+<h2><strong>Data Balance</strong><a class="headerlink" href="#data-balance" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mf">70.023</span><span class="p">,</span> <span class="mf">22.222</span><span class="p">,</span> <span class="mf">3.993</span><span class="p">,</span> <span class="mf">3.762</span><span class="p">]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unacc&#39;</span><span class="p">,</span> <span class="s1">&#39;acc&#39;</span><span class="p">,</span> <span class="s1">&#39;good&#39;</span><span class="p">,</span> <span class="s1">&#39;v-good&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Persebaran Data Target&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="images/db349bc117a1173bc725f5b20a3e93866a11426a025e6ffb7a6b74ee01fc5694.png" src="images/db349bc117a1173bc725f5b20a3e93866a11426a025e6ffb7a6b74ee01fc5694.png" />
+</div>
+</div>
+<p>Program kode di atas menunjukkan bahwa data class tidak merata, maka bisa dipastikan bahwa persebaran class dalam dataset ini tidaklah seimbang (balance)</p>
+</section>
+<section id="outlier">
+<h2><strong>Outlier</strong><a class="headerlink" href="#outlier" title="Permalink to this heading">#</a></h2>
+<p><strong>Z-Score</strong></p>
+<p>Salah satu metode yang digunakan untuk mendeteksi outlier adalah menggunakan Z-Score. Deteksi outlier menggunakan Z-Score adalah menghitung tiap data pada tiap kolom dikurangi nilai mean dari kolom tersebut, lalu hasilnya dibagi dengan standar deviasi dari kolom tersebut.</p>
+<p>Setelah itu menentukan nilai threshold sebagai batas tertentu yang mana jika nilai z-score tadi melebihi nilai threshold maka dapat dikatakan sebagai outlier. Threshold yang biasa digunakan pada metode Z-Score adalah 2 atau 3</p>
+<p><strong>NB:</strong> Deteksi outlier hanya untuk data fitur, label/class/target tidak termasuk.</p>
+<p><strong>Contoh:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>>>> 3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mean</span>
+<span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>>>> 1.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standar Deviasi</span>
+<span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>>>> 1.1183576344329658
+</pre></div>
+</div>
+</div>
+</div>
+<p>Data dengan index [0] pada fitur buying bernilai 3 setelah dikonversi, menghitung Z-Score dengan rumus:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \\
+    Z = \frac{x-μ}{σ}
+\end{split}\]</div>
+<p>Dengan nilai x = 3, maka didapat:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \\
+    Z = \frac{3-1.5}{1.1183576344329658}
+    \\
+    Z = 1.3416407864998738
+\end{split}\]</div>
+<p>Jika hasil <code class="docutils literal notranslate"><span class="pre">1.3416407864998738</span></code> melebihi threshold, maka nilai tersebut termasuk outlier</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">detectOutliers</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
+    <span class="n">z_score</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_kon</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_kon</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">df_kon</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">z_score</span>
+
+<span class="k">def</span> <span class="nf">outliers</span><span class="p">(</span><span class="n">outliers</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">outliers</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Outlier pada fitur&quot;</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="s2">&quot;= 0&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Outlier pada fitur&quot;</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">outliers</span><span class="o">.</span><span class="n">size</span><span class="o">/</span><span class="n">df_kon</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">df_out</span> <span class="o">=</span> <span class="n">df_kon</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">detectOutliers</span><span class="p">(</span><span class="s1">&#39;buying&#39;</span><span class="p">)</span>
+<span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;maint&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">detectOutliers</span><span class="p">(</span><span class="s1">&#39;maint&#39;</span><span class="p">)</span>
+<span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;doors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">detectOutliers</span><span class="p">(</span><span class="s1">&#39;doors&#39;</span><span class="p">)</span>
+<span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;persons&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">detectOutliers</span><span class="p">(</span><span class="s1">&#39;persons&#39;</span><span class="p">)</span>
+<span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;lug_boot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">detectOutliers</span><span class="p">(</span><span class="s1">&#39;lug_boot&#39;</span><span class="p">)</span>
+<span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;safety&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">detectOutliers</span><span class="p">(</span><span class="s1">&#39;safety&#39;</span><span class="p">)</span>
+
+<span class="c1"># Menentukan threshold</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">outliers_buying</span> <span class="o">=</span> <span class="n">df_out</span><span class="p">[</span><span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+<span class="n">outliers_maint</span> <span class="o">=</span> <span class="n">df_out</span><span class="p">[</span><span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;maint&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+<span class="n">outliers_doors</span> <span class="o">=</span> <span class="n">df_out</span><span class="p">[</span><span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;doors&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+<span class="n">outliers_persons</span> <span class="o">=</span> <span class="n">df_out</span><span class="p">[</span><span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;persons&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+<span class="n">outliers_lug_boot</span> <span class="o">=</span> <span class="n">df_out</span><span class="p">[</span><span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;lug_boot&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+<span class="n">outliers_safety</span> <span class="o">=</span> <span class="n">df_out</span><span class="p">[</span><span class="n">df_out</span><span class="p">[</span><span class="s1">&#39;safety&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+
+<span class="n">outliers</span><span class="p">(</span><span class="n">outliers_buying</span><span class="p">,</span> <span class="s1">&#39;buying&#39;</span><span class="p">)</span>
+<span class="n">outliers</span><span class="p">(</span><span class="n">outliers_maint</span><span class="p">,</span> <span class="s1">&#39;maint&#39;</span><span class="p">)</span>
+<span class="n">outliers</span><span class="p">(</span><span class="n">outliers_doors</span><span class="p">,</span> <span class="s1">&#39;doors&#39;</span><span class="p">)</span>
+<span class="n">outliers</span><span class="p">(</span><span class="n">outliers_persons</span><span class="p">,</span> <span class="s1">&#39;persons&#39;</span><span class="p">)</span>
+<span class="n">outliers</span><span class="p">(</span><span class="n">outliers_lug_boot</span><span class="p">,</span> <span class="s1">&#39;lug_boot&#39;</span><span class="p">)</span>
+<span class="n">outliers</span><span class="p">(</span><span class="n">outliers_safety</span><span class="p">,</span> <span class="s1">&#39;safety&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>>>> Outlier pada fitur buying = 0
+    Outlier pada fitur maint = 0
+    Outlier pada fitur doors = 0
+    Outlier pada fitur persons = 0
+    Outlier pada fitur lug_boot = 0
+    Outlier pada fitur safety = 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tidak ada outlier dari semua fitur</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="preprocessing">
+<h1><strong>PREPROCESSING</strong><a class="headerlink" href="#preprocessing" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2><strong>Seleksi Fitur</strong><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Akurasi setiap fitur yang di drop berurutan dari fitur dengan information gain paling rendah.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dropped_features</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[],</span>
+    <span class="p">[</span><span class="s1">&#39;doors&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;doors&#39;</span><span class="p">,</span> <span class="s1">&#39;maint&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;doors&#39;</span><span class="p">,</span> <span class="s1">&#39;maint&#39;</span><span class="p">,</span> <span class="s1">&#39;lug_boot&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;doors&#39;</span><span class="p">,</span> <span class="s1">&#39;maint&#39;</span><span class="p">,</span> <span class="s1">&#39;lug_boot&#39;</span><span class="p">,</span> <span class="s1">&#39;buying&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;doors&#39;</span><span class="p">,</span> <span class="s1">&#39;maint&#39;</span><span class="p">,</span> <span class="s1">&#39;lug_boot&#39;</span><span class="p">,</span> <span class="s1">&#39;buying&#39;</span><span class="p">,</span> <span class="s1">&#39;persons&#39;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">naive_bayes_scores</span> <span class="o">=</span> <span class="p">[</span><span class="mf">73.7</span><span class="p">,</span> <span class="mf">73.1</span><span class="p">,</span> <span class="mf">69.7</span><span class="p">,</span> <span class="mf">65.6</span><span class="p">,</span> <span class="mf">62.7</span><span class="p">,</span> <span class="mf">62.7</span><span class="p">]</span>
+<span class="n">decision_tree_scores</span> <span class="o">=</span> <span class="p">[</span><span class="mf">97.4</span><span class="p">,</span> <span class="mf">92.8</span><span class="p">,</span> <span class="mf">80.9</span><span class="p">,</span> <span class="mf">79.5</span><span class="p">,</span> <span class="mf">78.9</span><span class="p">,</span> <span class="mf">75.1</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dropped_features</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">decision_tree_scores</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Decision Tree&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dropped_features</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">naive_bayes_scores</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Naive Bayes&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Fitur Yang Di Drop&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Akurasi (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Seleksi Fitur&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dropped_features</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span> <span class="k">for</span> <span class="n">features</span> <span class="ow">in</span> <span class="n">dropped_features</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="images/465be6576f34df159e08b881605a54bf6ee5611465ddc4728e3da74b21e548a9.png" src="images/465be6576f34df159e08b881605a54bf6ee5611465ddc4728e3da74b21e548a9.png" />
+</div>
+</div>
+<p>Plot di atas menunjukkan bahwa untuk model Decision Tree, akurasi terbaik didapat ketika tidak ada satupun fitur yang dihilangkan, sedangkan pada model Naive Bayes juga sama akurasi terbaiknya adalah ketika tidak ada fitur yang dihilangkan.</p>
+</section>
+<section id="balancing-data">
+<h2><strong>Balancing Data</strong><a class="headerlink" href="#balancing-data" title="Permalink to this heading">#</a></h2>
+<p>Memisah data fitur (x) dan target (y)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df_kon</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_kon</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Metode Balancing</strong></p>
+<p><strong>RandomOverSampler</strong> adalah salah satu metode balancing data yang memungkinkan semua data yang tersedia diberi jumlah yang sama dengan data yang jumlah awalnya paling banyak, dalam kasus ini data yang jumlah awalnya paling banyak adalah “unacc” sebanyak 1210, jadi ke 3 class lainnya akan mengikuti jumlah tersebut, sehingga total data yang ada dalam suatu dataset akan bertambah sebanyak jumlah data class tertinggi dikali banyaknya class.</p>
+<p>Metode lain dalam balancing data adalah <strong>RandomUnderSampler</strong>, kebalikan dari RandomOverSampler yaitu semua data yang tersedia akan diberi jumlah yang sama dengan data yang jumlah awalnya paling sedikit, dan data akan berkurang.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#from imblearn.under_sampling import RandomUnderSampler</span>
+
+<span class="c1">#sampler = RandomUnderSampler(random_state=1)</span>
+
+<span class="c1">#x_resample, y_resample = sampler.fit_resample(x, y)</span>
+
+<span class="c1">#print(pd.Series(y_resample).value_counts())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">RandomOverSampler</span>
+
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">RandomOverSampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">x_resample</span><span class="p">,</span> <span class="n">y_resample</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_resample</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>>>> 0    1210
+    1    1210
+    3    1210
+    2    1210
+    Name: class, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perbandingan Penggunaan RandomOverSampler (ROS) vs RandomUnderSampler (RUS), untuk tiap model yang digunakan dalam kasus ini</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samplers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NB ROS&#39;</span><span class="p">,</span> <span class="s1">&#39;NB RUS&#39;</span><span class="p">,</span> <span class="s1">&#39;DT ROS&#39;</span><span class="p">,</span> <span class="s1">&#39;DT RUS&#39;</span><span class="p">]</span>
+<span class="n">accuracies</span> <span class="o">=</span> <span class="p">[</span><span class="mf">68.6</span><span class="p">,</span> <span class="mf">73.1</span><span class="p">,</span> <span class="mf">99.6</span><span class="p">,</span> <span class="mf">94.2</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">samplers</span><span class="p">,</span> <span class="n">accuracies</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Perbandingan RandomOverSampler vs RandomUnderSampler&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Akurasi (%)&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="images/0cdfea27af345299c928580f956efa627be21aef9d8f3cb9b71f0cbade001a75.png" src="images/0cdfea27af345299c928580f956efa627be21aef9d8f3cb9b71f0cbade001a75.png" />
+</div>
+</div>
+<p>Berdasarkan plot di atas dapat disimpulkan bahwa penggunaan RandomOverSampler memiliki hasil akurasi lebih tinggi pada model Decision Tree sebesar 99.6%, daripada menggunakan RandomUnderSampler dengan kedua modelnya.</p>
+</section>
+<section id="splitting-data">
+<h2><strong>Splitting Data</strong><a class="headerlink" href="#splitting-data" title="Permalink to this heading">#</a></h2>
+<p>Membagi data ke dalam bentuk data training dan data testing, di mana data training digunakan untuk melatih model dan data testing digunakan untuk memprediksi akurasi model yang sudah terlatih.</p>
+<p>Pada kasus ini data training yang digunakan adalah sebanyak 80% dan data testing yang digunakan adalah 20%.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x_resample</span><span class="p">,</span> <span class="n">y_resample</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="normalisasi-data">
+<h2><strong>Normalisasi data</strong><a class="headerlink" href="#normalisasi-data" title="Permalink to this heading">#</a></h2>
+<p><strong>Min-Max Scaler</strong></p>
+<p>MinMaxScaler merupakan suatu metode preprocessing yang mengubah data awal menjadi data dengan range antar 0 dan 1.</p>
+<p>Data dengan nilai terbesar dalam suatu fitur akan bernilai 1 dan data terkecil akan bernilai 0, untuk data yang berada di antara keduanya di skalakan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="n">mm</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+
+<span class="n">x_train_mm</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<span class="n">x_test_mm</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Untuk dapat menghitung Min-Max Scaler secara manual diperlukan rumus berikut:</p>
+<div class="math notranslate nohighlight">
+\[
+    X_{\text{scaled}} = \frac{X - X_{\text{min}}}{X_{\text{max}} - X_{\text{min}}}
+\]</div>
+<p>Ambil contoh fitur lug_boots yang memiliki 3 value (small, med, big), yang setelah dikonversi akan menjadi (small: 0, med: 1, big: 2), nilai minimum adalah 0 dan nilai maksimum adalah 2.
+Menggunakan rumus di atas untuk menskalakan nilai dari lug_boots adalah:
+$<span class="math notranslate nohighlight">\(
+    X_{0} = \frac{0 - 0}{2 - 0} = 0
+    \\
+    X_{1} = \frac{1 - 0}{2 - 0} = 0.5
+    \\
+    X_{2} = \frac{2 - 0}{2 - 0} = 1
+    \\
+\)</span>$</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="modelling">
+<h1><strong>MODELLING</strong><a class="headerlink" href="#modelling" title="Permalink to this heading">#</a></h1>
+<section id="naive-bayes">
+<h2><strong>Naive Bayes</strong><a class="headerlink" href="#naive-bayes" title="Permalink to this heading">#</a></h2>
+<p>Naive Bayes adalah sebuah metode klasifikasi yang berdasarkan pada teorema Bayes dengan asumsi bahwa setiap fitur yang digunakan untuk klasifikasi adalah independen satu sama lain.</p>
+<p>Metode Naive Bayes menggunakan teorema Bayes, yang menyatakan bahwa probabilitas kondisional atau <code class="docutils literal notranslate"><span class="pre">P(A∣B)</span> </code>
+dapat dihitung dengan rumus:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A \mid B)=\frac{P(B \mid A) \times P(A)}{P(B)}
+\]</div>
+<p>Ada beberapa metode Naive Bayes:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.   Naive Bayes Gaussian: biasanya untuk data numerik.
+2.   Naive Bayes Multinomial: biasanya untuk data kategorikal.
+3.   Naive Bayes Bernoulli: biasanya digunakan untuk data biner (1, 0).
+</pre></div>
+</div>
+<p>Pada kasus ini sendiri metode Naive Bayes yang digunakan adalah metode Gaussian, karena data yang diolah berupa data kategorikal yang dikonversi ke data numerik.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="n">clf_nb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">clf_nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_mm</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">GaussianNB</label><div class="sk-toggleable__content"><pre>GaussianNB()</pre></div></div></div></div></div></div></div>
+</div>
+</section>
+<section id="decision-tree">
+<h2><strong>Decision Tree</strong><a class="headerlink" href="#decision-tree" title="Permalink to this heading">#</a></h2>
+<p>Decision Tree (Pohon Keputusan) adalah salah satu metode machine learning yang digunakan untuk pengambilan keputusan dan pemodelan prediktif. Decision Tree mengambil keputusan dengan membagi data ke dalam kelompok-kelompok yang semakin kecil berdasarkan serangkaian keputusan berbasis fitur-fitur dari data.</p>
+<p>Metode ini memiliki 3 komponen yaitu akar, ranting, dan daun. Tiap komponennya terdiri dari 2 atau lebih cabang, dan atribut yang memiliki nilai Information Gain tertinggilah yang nantinya akan menjadi akar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+<span class="n">clf_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">clf_tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_mm</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-2 {color: black;background-color: white;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier()</pre></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualisasi Model Decision Tree</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span>
+    <span class="n">clf_tree</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="n">class_names</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="images/381c74a8219387a58a97bdb0ad2fa0f4c722be5e9d6dda6c54db7ac200dfbf58.png" src="images/381c74a8219387a58a97bdb0ad2fa0f4c722be5e9d6dda6c54db7ac200dfbf58.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluation">
+<h1><strong>EVALUATION</strong><a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h1>
+<p>Pada tahap evaluation akan diketahui berapa akurasi dari model yang telah dipakai sebelumnya.</p>
+<section id="id2">
+<h2><strong>Naive Bayes</strong><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># prediksi dari x_test</span>
+<span class="n">pred_nb</span> <span class="o">=</span> <span class="n">clf_nb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_mm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># akurasi</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">acc_nb</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_nb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Akurasi dari model Naive Bayes (Min-Max Scaler) adalah&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">((</span><span class="n">acc_nb</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>>>> Akurasi dari model Naive Bayes (Min-Max Scaler) adalah 68.6 %
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2><strong>Decision Tree</strong><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># prediksi dari x_test</span>
+<span class="n">pred_tree</span> <span class="o">=</span> <span class="n">clf_tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_mm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># akurasi</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">acc_tree</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_tree</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Akurasi dari model Decision Tree (Min-Max Scaler) adalah&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">((</span><span class="n">acc_tree</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>>>> Akurasi dari model Decision Tree (Min-Max Scaler) adalah 99.6 %
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="deployment">
+<h1><strong>DEPLOYMENT</strong><a class="headerlink" href="#deployment" title="Permalink to this heading">#</a></h1>
+<section id="save-model-dan-preprocessing">
+<h2><strong>Save Model dan Preprocessing</strong><a class="headerlink" href="#save-model-dan-preprocessing" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;nbClf.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">clf_nb</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;treeClf.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">clf_tree</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;scaler.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mm</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="streamlit">
+<h2><strong>Streamlit</strong><a class="headerlink" href="#streamlit" title="Permalink to this heading">#</a></h2>
+<p>Link deploy streamlit: <a class="reference external" href="https://car-evaluation-app.streamlit.app/">Car-Evaluation</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>BUSINESS UNDERSTANDING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan"><strong>Penjelasan</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>DATA UNDERSTANDING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data"><strong>Deskripsi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur"><strong>Penjelasan Fitur</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-class"><strong>Penjelasan Class</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-data-tiap-class"><strong>Jumlah data tiap class</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inisialisasi-data"><strong>Inisialisasi Data</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-data"><strong>Konversi data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data"><strong>Visualisasi data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values"><strong>Missing Values</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur"><strong>Seleksi Fitur</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-balance"><strong>Data Balance</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outlier"><strong>Outlier</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing"><strong>PREPROCESSING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Seleksi Fitur</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-data"><strong>Balancing Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-data"><strong>Splitting Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data"><strong>Normalisasi data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling"><strong>MODELLING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes"><strong>Naive Bayes</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree"><strong>Decision Tree</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation"><strong>EVALUATION</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Naive Bayes</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Decision Tree</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment"><strong>DEPLOYMENT</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-model-dan-preprocessing"><strong>Save Model dan Preprocessing</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streamlit"><strong>Streamlit</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
